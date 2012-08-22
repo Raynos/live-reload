@@ -1,0 +1,32 @@
+{
+  "name": "live-reload",
+  "version": "0.0.1",
+  "description": "A live reload server & client",
+  "keywords": [],
+  "author": "Raynos <raynos2@gmail.com>",
+  "repository": "git://github.com/Raynos/live-reload.git",
+  "main": "index",
+  "homepage": "https://github.com/Raynos/live-reload",
+  "browserify": "browser.js",
+  "contributors": [
+    {
+      "name": "Jake Verbaten"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Raynos/live-reload/issues",
+    "email": "raynos2@gmail.com"
+  },
+  "dependencies": {
+    "shoe": "0.0.5",
+    "hound": "~1.0.4"
+  },
+  "devDependencies": {},
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/Raynos/live-reload/raw/master/LICENSE"
+    }
+  ],
+  "scripts": {}
+}
