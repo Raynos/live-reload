@@ -8,13 +8,17 @@ A live reload server & client
 var LiveReloadServer = require("live-reload")
 
 var server = LiveReloadServer({
-    cwd: "path to watch on"
+    uri: "path to watch on"
     , ignore: "a filtering function"
 })
 
 server.listen(8080)
 // Server now listening to port 8080 and any LiveReloadClient can connect to it
 ```
+
+## CLI
+
+`$ live-reload --uri=someUri --port=SomePort`
 
 ## Example client-side code
 
