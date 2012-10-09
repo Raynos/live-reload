@@ -1,4 +1,4 @@
-var shoe = require("shoe")
+var reconnect = require("reconnect/shoe")
 
 module.exports = LiveReloadClient
 
@@ -7,9 +7,9 @@ function LiveReloadClient(uri) {
         uri = "http://localhost:" + uri
     }
 
-    var stream = shoe(uri + "/shoe")
-    
-    stream.on("data", ondata)
+    reconnect(function (stream) {
+        stream.on("data", ondata)
+    }).connect(uri + "/shoe")
 }
 
 function ondata(data) {

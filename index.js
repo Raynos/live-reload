@@ -1,7 +1,7 @@
 var http = require("http")
     , shoe = require("shoe")
     , path = require("path")
-    , hound = require("hound")
+    , watchr = require("watchr")
     , openStreams = []
 
 module.exports = LiveReloadServer
@@ -9,14 +9,15 @@ module.exports = LiveReloadServer
 function LiveReloadServer(options) {
     var server = http.createServer(serveText)
         , sock = shoe(handleStream)
-        , cwd = options.cwd || process.cwd()
+        , uri = options.uri || process.cwd()
         , filterIgnored = options.ignore || noop
 
-    var watcher = hound.watch(cwd)
-
-    watcher.on("change", reload)
-    watcher.on("create", reload)
-    watcher.on("delete", reload)
+    watchr.watch({
+        path: uri
+        , listener: reload
+        , ignoreHiddenFiles: true
+        , ignorePatterns: true
+    })
 
     sock.install(server, "/shoe")
 
