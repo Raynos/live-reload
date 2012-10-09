@@ -1,6 +1,6 @@
 {
   "name": "live-reload",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A live reload server & client",
   "keywords": [],
   "author": "Raynos <raynos2@gmail.com>",
