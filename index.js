@@ -11,6 +11,8 @@ function LiveReloadServer(options) {
         , sock = shoe(handleStream)
         , uri = options.uri || process.cwd()
         , filterIgnored = options.ignore || noop
+        , delay = options.delay || 1000
+        , timer
 
     watchr.watch({
         path: uri
@@ -41,9 +43,15 @@ function LiveReloadServer(options) {
     }
 
     function reload(fileName) {
-        if (!filterIgnored(fileName)) {
-            openStreams.forEach(sendMessage)
+        if (timer) {
+            clearTimeout(timer)
         }
+
+        timer = setTimeout(function () {
+            if (!filterIgnored(fileName)) {
+                openStreams.forEach(sendMessage)
+            }
+        }, delay)
     }
 
     function sendMessage(stream) {
