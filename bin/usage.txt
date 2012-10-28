@@ -1,10 +1,3 @@
-# live-reload
-
-A live reload server & client
-
-## Docs
-
-```
 Usage:
 
   live-reload [uri] --port=somePort --delay=someDelay
@@ -21,14 +14,3 @@ Usage:
 
     To connect a browser to a live-reload server simply add
         <script src="localhost:somePort"></script> to your page
-```
-
-## Installation
-
-`npm install live-reload`
-
-## Contributors
-
- - Raynos
-
-## MIT Licenced

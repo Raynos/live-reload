@@ -2,6 +2,7 @@ var http = require("http")
     , shoe = require("shoe")
     , path = require("path")
     , watchr = require("watchr")
+    , bundle = require("browserify-server")
     , openStreams = []
 
 module.exports = LiveReloadServer
@@ -12,7 +13,11 @@ function LiveReloadServer(options) {
         , uri = options.uri || process.cwd()
         , filterIgnored = options.ignore || noop
         , delay = options.delay || 1000
+        , port = options.port || 9090
         , timer
+        , source = bundle(path.join(__dirname, "reload.js"), {
+            body: "require('./browser.js')(" + port + ")"
+        })
 
     watchr.watch({
         path: uri
@@ -23,10 +28,15 @@ function LiveReloadServer(options) {
 
     sock.install(server, "/shoe")
 
-    return server
+    server.listen(port)
+
+    console.log("live reload server listening on port", port
+        , "reloading on files", uri)
+
 
     function serveText(req, res) {
-        res.end("live reload server running")
+        res.setHeader("content-type", "application/javascript")
+        res.end(source)
     }
 
     function handleStream(stream) {
