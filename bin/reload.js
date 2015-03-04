@@ -6,7 +6,6 @@ var argv = require("optimist").argv
 
     , Reload = require("..")
 
-    , uri = argv.uri = argv._[0]
     , help = argv.help || argv.h
 
 if (help) {
