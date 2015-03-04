@@ -10,7 +10,7 @@ module.exports = LiveReloadServer
 function LiveReloadServer(options) {
     var server = http.createServer(serveText)
         , sock = shoe(handleStream)
-        , uri = options.uri || process.cwd()
+        , paths = options._ || process.cwd()
         , filterIgnored = options.ignore || noop
         , delay = options.delay || 1000
         , port = options.port || 9090
@@ -20,7 +20,7 @@ function LiveReloadServer(options) {
         })
 
     watchr.watch({
-        path: uri
+        paths: paths
         , listener: reload
         , ignoreHiddenFiles: true
         , ignorePatterns: true
