@@ -31,7 +31,7 @@ function LiveReloadServer(options) {
     server.listen(port)
 
     console.log("live reload server listening on port", port
-        , "reloading on files", uri)
+        , "reloading on files")
 
 
     function serveText(req, res) {
