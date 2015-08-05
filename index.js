@@ -23,7 +23,6 @@ function LiveReloadServer(options) {
         paths: paths
         , listener: reload
         , ignoreHiddenFiles: true
-        , ignorePatterns: true
     })
 
     sock.install(server, "/shoe")
@@ -52,7 +51,7 @@ function LiveReloadServer(options) {
         }
     }
 
-    function reload(fileName) {
+    function reload(changeType, fileName) {
         if (timer) {
             clearTimeout(timer)
         }
