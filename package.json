@@ -1,6 +1,6 @@
 {
   "name": "live-reload",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A live reload server & client",
   "keywords": [],
   "author": "Raynos <raynos2@gmail.com>",
@@ -11,6 +11,10 @@
   "contributors": [
     {
       "name": "Jake Verbaten"
+    },
+    {
+      "name": "DEADB17",
+      "email": "deadb17@gmail.com"
     }
   ],
   "bugs": {

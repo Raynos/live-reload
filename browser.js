@@ -4,7 +4,7 @@ module.exports = LiveReloadClient
 
 function LiveReloadClient(uri) {
     if (typeof uri === "number") {
-        uri = "http://localhost:" + uri
+        uri = "//localhost:" + uri
     }
 
     reconnect(function (stream) {
