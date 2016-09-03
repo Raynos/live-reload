@@ -33,5 +33,6 @@ Usage:
 ## Contributors
 
  - Raynos
+ - DEADB17
 
 ## MIT Licenced
