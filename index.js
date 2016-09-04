@@ -1,5 +1,4 @@
-var http = require("http")
-    , shoe = require("shoe")
+var shoe = require("shoe")
     , path = require("path")
     , watchr = require("watchr")
     , bundle = require("browserify-server")
@@ -8,8 +7,19 @@ var http = require("http")
 module.exports = LiveReloadServer
 
 function LiveReloadServer(options) {
-    var server = http.createServer(serveText)
-        , sock = shoe(handleStream)
+    var fs, httpsOpts, server, isHttps = false;
+    if (options.key && options.cert) {
+        fs = require("fs");
+        httpsOpts = {
+            key: fs.readFileSync(options.key),
+            cert: fs.readFileSync(options.cert)
+        };
+        isHttps = true;
+        server = require("https").createServer(httpsOpts, serveText)
+    } else {
+        server = require("http").createServer(serveText)
+    }
+    var sock = shoe(handleStream)
         , paths = options._ || process.cwd()
         , filterIgnored = options.ignore || noop
         , delay = options.delay || 1000
@@ -30,8 +40,9 @@ function LiveReloadServer(options) {
 
     server.listen(port)
 
-    console.log("live reload server listening on port", port
-        , "reloading on files")
+    console.log("Live reload server listening on port", port
+                , "reloading on files. Using"
+                , isHttps ? "https" : "http")
 
 
     function serveText(req, res) {

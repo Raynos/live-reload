@@ -8,6 +8,7 @@ A live reload server & client
 Usage:
 
   live-reload [<path>...] --port=somePort --delay=someDelay
+              --key=<path-to-key-file> --cert=<path-to-crt-file>
 
     Runs a live-reload server on the port. It listens to changes
         on one or more paths and sends reload commands to any 
@@ -19,8 +20,10 @@ Usage:
         want to reload say 1s after all files have been written
         to disk.
 
+    If both key and cert are set, the server will run on https.
+
     To connect a browser to a live-reload server simply add
-        <script src="localhost:somePort"></script> to your page
+        <script src="//localhost:somePort"></script> to your page
 ```
 
 ## Installation
@@ -30,5 +33,6 @@ Usage:
 ## Contributors
 
  - Raynos
+ - DEADB17
 
 ## MIT Licenced
